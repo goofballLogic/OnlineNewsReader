@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineNewsReader.UI", "OnlineNewsReader.UI\OnlineNewsReader.UI.csproj", "{A8FF1006-817A-4F86-AE7B-D08077B0D8D2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7BF94873-9136-48A6-BCA0-CD236D4EB8C5} = {7BF94873-9136-48A6-BCA0-CD236D4EB8C5}
+		{A5CF5BFE-F63D-46FF-B896-6C47FE8B2512} = {A5CF5BFE-F63D-46FF-B896-6C47FE8B2512}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineNewsReader.Business", "OnlineNewsReader.Business\OnlineNewsReader.Business.csproj", "{7BF94873-9136-48A6-BCA0-CD236D4EB8C5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{59D6324B-093A-4EBF-A14F-7C928FBDC58A} = {59D6324B-093A-4EBF-A14F-7C928FBDC58A}
+		{A5CF5BFE-F63D-46FF-B896-6C47FE8B2512} = {A5CF5BFE-F63D-46FF-B896-6C47FE8B2512}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineNewsReader.Data", "OnlineNewsReader.Data\OnlineNewsReader.Data.csproj", "{59D6324B-093A-4EBF-A14F-7C928FBDC58A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A5CF5BFE-F63D-46FF-B896-6C47FE8B2512} = {A5CF5BFE-F63D-46FF-B896-6C47FE8B2512}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineNewsReader.Core", "OnlineNewsReader.Core\OnlineNewsReader.Core.csproj", "{A5CF5BFE-F63D-46FF-B896-6C47FE8B2512}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineNewsReader.UI.Tests", "OnlineNewsReader.UI.Tests\OnlineNewsReader.UI.Tests.csproj", "{F8295958-CCB9-4090-BDC4-9BE26D9A4CC9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8FF1006-817A-4F86-AE7B-D08077B0D8D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8FF1006-817A-4F86-AE7B-D08077B0D8D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8FF1006-817A-4F86-AE7B-D08077B0D8D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8FF1006-817A-4F86-AE7B-D08077B0D8D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BF94873-9136-48A6-BCA0-CD236D4EB8C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BF94873-9136-48A6-BCA0-CD236D4EB8C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BF94873-9136-48A6-BCA0-CD236D4EB8C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BF94873-9136-48A6-BCA0-CD236D4EB8C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59D6324B-093A-4EBF-A14F-7C928FBDC58A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59D6324B-093A-4EBF-A14F-7C928FBDC58A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59D6324B-093A-4EBF-A14F-7C928FBDC58A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59D6324B-093A-4EBF-A14F-7C928FBDC58A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5CF5BFE-F63D-46FF-B896-6C47FE8B2512}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5CF5BFE-F63D-46FF-B896-6C47FE8B2512}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5CF5BFE-F63D-46FF-B896-6C47FE8B2512}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5CF5BFE-F63D-46FF-B896-6C47FE8B2512}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8295958-CCB9-4090-BDC4-9BE26D9A4CC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8295958-CCB9-4090-BDC4-9BE26D9A4CC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8295958-CCB9-4090-BDC4-9BE26D9A4CC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8295958-CCB9-4090-BDC4-9BE26D9A4CC9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C4DF052E-9AFF-4BC6-943D-DE83ECBC2EE1}
+	EndGlobalSection
+EndGlobal

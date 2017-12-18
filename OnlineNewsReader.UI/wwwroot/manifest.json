@@ -1,0 +1,32 @@
+﻿{
+	"name": "Online News Reader",
+	"short_name": "Online News Reader",
+	"version": "0.0.0.1",
+	"manifest_version": 2,
+	"display": "standalone",
+	"icons": [
+		{
+			"src": "/images/icon.png",
+			"type": "image/png",
+			"sizes": "48x48"
+		},
+		{
+			"src": "/images/icon.png",
+			"type": "image/png",
+			"sizes": "96x96"
+		},
+		{
+			"src": "/images/icon.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		}
+	],
+	"app": {
+		"urls": [
+			"https://onlinenewsreader.azurewebsites.net/"
+		],
+		"launch": {
+			"web_url": "https://onlinenewsreader.azurewebsites.net/"
+		}
+	}
+}

@@ -1,0 +1,22 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/OnlineNewsReader.Business/bin/Debug/netcoreapp2.0
+/OnlineNewsReader.Business/obj
+/OnlineNewsReader.CrossCuttingConcerns/bin/Debug/netcoreapp2.0
+/OnlineNewsReader.CrossCuttingConcerns/obj
+/OnlineNewsReader.Data/bin/Debug/netcoreapp2.0
+/OnlineNewsReader.Data/obj
+/OnlineNewsReader.UI/bin
+/OnlineNewsReader.UI/obj
+/OnlineNewsReader.Core/obj
+/OnlineNewsReader.Core/bin/Debug/netcoreapp2.0
+/OnlineNewsReader.Business/bin/Release/netcoreapp2.0
+/OnlineNewsReader.Core/bin/Release/netcoreapp2.0
+/OnlineNewsReader.Data/bin/Release/netcoreapp2.0
+/OnlineNewsReader.UI.Tests/bin/Debug/netcoreapp2.0
+/OnlineNewsReader.UI.Tests/obj
+/packages
+/OnlineNewsReader.UI/Properties/PublishProfiles

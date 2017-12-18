@@ -1,0 +1,163 @@
+﻿@model OnlineNewsReader.UI.ViewModels.NewsArticles.ListViewModel
+
+@using OnlineNewsReader.Core.Extensions
+
+@{
+	ViewData["Title"] = "Online News Reader";
+}
+
+@using (Html.BeginForm("List", "NewsArticles", FormMethod.Get))
+{
+	<div class="grid-x" role="search">
+		<div class="cell">
+			<div id="divQuery">
+				@Html.TextBoxFor(model => model.Query, new { autocomplete = "off", @id = "inputQuery", placeholder = "Search", tabindex = "1" })
+				<button id="eh">Search</button>
+			</div>
+		</div>
+		<div class="cell">
+			<div class="grid-x">
+				<div class="cell large-6">
+					<div id="divFromTo">
+						<div class="grid-x">
+							<div class="cell large-6">
+								@Html.LabelFor(model => model.From, "Published from", new { @for = "inputFrom" })
+								@Html.TextBoxFor(model => model.From, new { autocomplete = "off", @id = "inputFrom", placeholder = "yyyy/mm/dd", tabindex = "2", type = "text" })
+							</div>
+							<div class="cell large-6">
+								@Html.LabelFor(model => model.To, "Published to", new { @for = "inputTo" })
+								@Html.TextBoxFor(model => model.To, new { autocomplete = "off", @id = "inputTo", placeholder = "yyyy/mm/dd", tabindex = "3", type = "text" })
+							</div>
+						</div>
+						<button>Search</button>
+					</div>
+				</div>
+				<div class="cell large-6">
+					<div id="divSortBy">
+						@Html.LabelFor(model => model.SortBy, "Sort by", new { @for = "selectSortBy" })
+						@Html.DropDownListFor(model => model.SortBy, new SelectList(new List<Object> { new { value = "publishedAt", text = "Published date" }, new { value = "popularity", text = "Popularity" }, new { value = "relevancy", text = "Relevancy" } }, "value", "text", Model.SortBy), new { autocomplete = "off", @id = "selectSortBy", tabindex = "4" })
+						<button>Search</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		@if (Model != null && Model.NewsArticles != null && Model.NewsArticles.Count > 0)
+		{
+			<div class="cell">
+				<div class="grid-x">
+					<main class="cell">
+						<p class="text-center"><strong>@string.Format("{0:N0}", Model.TotalResults)</strong> news articles found</p>
+						<div class="grid-x">
+							@foreach (var newsArticle in Model.NewsArticles)
+							{
+								if (newsArticle != null && !string.IsNullOrWhiteSpace(newsArticle.Name) && !string.IsNullOrWhiteSpace(newsArticle.Url))
+								{
+									<article class="cell" itemscope itemtype="http://schema.org/NewsArticle">
+										<div class="grid-x">
+											<div class="cell medium-3">
+												<a data-open="article@(Model.NewsArticles.IndexOf(newsArticle))" href="#" itemprop="url" target="_blank">
+													<div class="image" itemprop="image" style="background-image: url(@newsArticle.Image), url(//via.placeholder.com/800x500.png/CCCCCC/333333?text=Image%20not%20available);">
+														<span class="show-for-sr">Image for @newsArticle.Name</span>
+													</div>
+												</a>
+											</div>
+											<div class="cell medium-9">
+												<header>
+													<h2 itemprop="name"><a data-open="article@(Model.NewsArticles.IndexOf(newsArticle))" href="@newsArticle.Url" itemprop="url" target="_blank">@newsArticle.Name</a></h2>
+													@if (!string.IsNullOrWhiteSpace(newsArticle.Author))
+													{
+														<span class="author" itemprop="author">@newsArticle.Author</span>
+													}
+												</header>
+												@if (!string.IsNullOrWhiteSpace(newsArticle.Description))
+												{
+													<p itemprop="description">@newsArticle.Description</p>
+												}
+												@if (!string.IsNullOrWhiteSpace(newsArticle.SourceOrganisation) || newsArticle.DatePublished != null)
+												{
+													<footer>
+														@if (!string.IsNullOrWhiteSpace(newsArticle.SourceOrganisation))
+														{
+															<span class="sourceOrganisation" itemprop="sourceOrganization">@newsArticle.SourceOrganisation</span>
+														}
+														@if (!string.IsNullOrWhiteSpace(newsArticle.SourceOrganisation))
+														{
+															<time class="datePublished" datetime="@string.Format("{0:yyyy-MM-ddTHH:mm:ss-00:00}", (DateTime)newsArticle.DatePublished)">@(((DateTime)newsArticle.DatePublished).ToHumanReadable())</time>
+														}
+													</footer>
+												}
+											</div>
+										</div>
+										<div class="reveal large" data-reveal id="article@(Model.NewsArticles.IndexOf(newsArticle))">
+											<div class="grid-x">
+												<div class="cell">
+													<h2 itemprop="name">@newsArticle.Name</h2>
+												</div>
+												@if (!string.IsNullOrWhiteSpace(newsArticle.Image))
+												{
+													<div class="cell">
+														<img alt="" src="@newsArticle.Image" />
+													</div>
+												}
+												@if (!string.IsNullOrWhiteSpace(newsArticle.Description))
+												{
+													<div class="cell">
+														<p class="lead" itemprop="description">@newsArticle.Description</p>
+													</div>
+												}
+												<div class="cell">
+													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rhoncus eleifend erat sed faucibus. In varius ante mattis ex mattis imperdiet. Curabitur nec pulvinar mauris. Nulla eu enim at ex elementum imperdiet. Maecenas vitae metus nec ipsum ultricies pulvinar. Phasellus ligula justo, imperdiet sit amet cursus quis, rutrum vel arcu. Fusce fermentum tortor purus. Sed a purus quis leo auctor venenatis sed ac ante. Curabitur dapibus non justo eu consequat. Morbi vehicula convallis erat, non accumsan risus blandit ut.</p>
+													<p>Phasellus id est dignissim, semper purus non, lacinia velit. Sed varius malesuada volutpat. Nullam a urna vestibulum magna hendrerit tincidunt sit amet a ante. Etiam consectetur leo at egestas consectetur. Sed sollicitudin consectetur varius. Nam eget mauris diam. Morbi suscipit, tortor sit amet consectetur molestie, lorem nisi accumsan sapien, faucibus varius libero urna eu erat. Proin et quam posuere, maximus lectus tincidunt, fermentum est. Phasellus et auctor libero. Cras quam nisl, dignissim vitae fermentum quis, facilisis ut libero. Fusce imperdiet blandit nunc, ac congue elit pulvinar ut. Donec vel malesuada orci. Curabitur sodales nisl ac molestie tincidunt. Vestibulum rhoncus urna et neque imperdiet, non volutpat risus condimentum. Sed imperdiet condimentum interdum. Fusce suscipit viverra nisl sed feugiat.</p>
+													<p>Aliquam iaculis pulvinar lacinia. Pellentesque tincidunt elementum arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut non justo dui. Maecenas at enim eget lectus tempus rutrum nec ut est. Fusce non tincidunt nunc. Ut purus sem, facilisis vitae porttitor id, rutrum quis eros. Quisque mollis vehicula orci, nec fringilla tellus semper eget. Suspendisse accumsan aliquam diam. Quisque dictum rutrum erat eu mattis. Sed hendrerit leo ac malesuada scelerisque. Vivamus consectetur scelerisque aliquam. Aliquam pretium, eros eu posuere porta, lacus arcu hendrerit urna, tempor hendrerit sem ante in libero. Cras consectetur diam sit amet nisl commodo, at gravida orci pharetra. Nulla viverra sed tortor sed cursus. Sed dapibus egestas neque id consequat.</p>
+												</div>
+												<div class="cell"><a class="button" href="@newsArticle.Url" target="_blank">Read original article</a></div>
+												<a class="close-button" data-close aria-label="Close modal">
+													<span aria-hidden="true">&times;</span>
+												</a>
+											</div>
+										</div>
+									</article>
+								}
+							}
+						</div>
+					</main>
+				</div>
+				@if (!string.IsNullOrWhiteSpace(Model.PreviousPageUrl) || !string.IsNullOrWhiteSpace(Model.NextPageUrl))
+				{
+					<nav class="pagination">
+						<h2 class="show-for-sr">Pagination</h2>
+						<div class="grid-x">
+							@if (!string.IsNullOrWhiteSpace(Model.PreviousPageUrl))
+							{
+								<div class="cell small-6">
+									<a class="button expanded async" href="@Model.PreviousPageUrl">Previous page</a>
+								</div>
+							}
+							else
+							{
+								<div class="cell auto"></div>
+
+							}
+							@if (!string.IsNullOrWhiteSpace(Model.NextPageUrl))
+							{
+								<div class="cell small-6 text-left">
+									<a class="button expanded async" href="@Model.NextPageUrl">Next page</a>
+								</div>
+							}
+							else
+							{
+								<div class="cell auto"></div>
+
+							}
+						</div>
+					</nav>
+				}
+			</div>
+		}
+		else
+		{
+			<p class="text-center">We could not find any news articles that match your search criteria.</p>
+		}
+	</div>
+}
